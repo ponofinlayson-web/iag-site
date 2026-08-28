@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IAG — Identity &amp; Access Governance, self-hosted</title>
+  <meta name="description" content="Self-hosted identity and access governance: ingest identities from LDAP, Entra ID, SQL or CSV; run certification campaigns; enforce decisions with write-back; keep a tamper-evident, hash-chained audit trail.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Spectral:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23f4efe4'/%3E%3Cpath d='M7 6h13v4h-9v12h-4z' fill='%23a4372a'/%3E%3Cpath d='M12 10h13v16H12z' fill='%231c1a15'/%3E%3Cpath d='M15 14h7v2h-7zm0 4h7v2h-7zm0 4h5v2h-5z' fill='%23f4efe4'/%3E%3C/svg%3E">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="./">
+      <span class="brand-mark">IAG</span>
+      <span class="brand-name">Identity&nbsp;&amp;&nbsp;Access&nbsp;<em>Governance</em></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#capabilities">Capabilities</a>
+      <a href="#workflow">How it works</a>
+      <a href="#evidence">Evidence</a>
+      <a class="nav-docs nav-docs-underline" href="https://docs.iam-simplified.com">Docs</a>
+      <a class="btn btn-primary" href="https://github.com/ponofinlayson-web/iag">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ======================= HERO ======================= -->
+  <section class="hero wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">Self-hosted · Open-core · v0.3.0</div>
+        <h1 class="display">Every access decision,<br>on the record.<br><span class="red">Verifiably.</span></h1>
+        <p class="lede">
+          IAG ingests identities and their access from LDAP, Microsoft Entra ID, SQL or
+          CSV, normalizes them into an entitlement catalog, and puts every certification
+          decision — approve, revoke, remediate — into a tamper-evident, hash-chained
+          audit trail. Your data never leaves your infrastructure.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#deploy">Get running in minutes</a>
+          <a class="btn btn-ghost" href="https://docs.iam-simplified.com">Read the docs&nbsp;&nbsp;→</a>
+          <span class="stamp ok" style="margin-left:6px;">Audit chain verified</span>
+        </div>
+        <div class="hero-meta">
+          <span><span class="dot"></span>288 backend tests green</span>
+          <span><span class="dot"></span>Fault-tolerance smoke-tested</span>
+          <span><span class="dot"></span>MIT-ish self-host, no phoning home</span>
+        </div>
+      </div>
+
+      <aside class="sheet sheet-lines ledger-margin chain-panel" aria-label="Audit chain sample">
+        <h3><span>AUDIT_ENTRIES · TAIL</span> <span class="live">● LIVE</span></h3>
+        <div id="chainfeed">
+          <div class="chain-row">
+            <span class="seq">#0001</span><span class="hash">b91c4a6f…7d02</span><span class="act sync">SYNC</span>
+          </div>
+          <div class="chain-row">
+            <span class="seq">#0002</span><span class="hash">4e8d1b27…9f31</span><span class="act create">CREATE</span>
+          </div>
+          
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ======================= PILLARS ======================= -->
+  <section class="section wrap" id="capabilities">
+    <div class="section-head">
+      <h2>Built on four contracts</h2>
+      <span class="count">§ 01 — CAPABILITIES</span>
+    </div>
+    <div class="pillars">
+      <div class="sheet pillar ledger-margin">
+        <span class="num">§ 1.1</span>
+        <h3>Ingest from anywhere</h3>
+        <p>CSV uploads and live connectors — LDAP/AD, Entra ID, SQL, CSV-on-URL — normalize accounts and access into a stable entitlement catalog. Re-syncs refresh; they never duplicate.</p>
+      </div>
+      <div class="sheet pillar ledger-margin">
+        <span class="num">§ 1.2</span>
+        <h3>Certify in campaigns</h3>
+        <p>Scope by source, department, privilege, or orphaned accounts. Reviewers resolve each access review; campaigns auto-complete at 100% decided, with SoD toxic-combination flags surfaced inline.</p>
+      </div>
+      <div class="sheet pillar ledger-margin">
+        <span class="num">§ 1.3</span>
+        <h3>Enforce with write-back</h3>
+        <p>Decisions trigger rules that notify owners by email, call webhooks, or write access changes back at the source — LDAP member removal, Entra group writes, SQL statements.</p>
+      </div>
+      <div class="sheet pillar ledger-margin">
+        <span class="num">§ 1.4</span>
+        <h3>Prove it later</h3>
+        <p>An append-only, hash-chained audit trail commits in the same transaction as every state change — plus a chain-verification endpoint and a pull-only JSONL SIEM feed.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= WORKFLOW ======================= -->
+  <section class="section wrap" id="workflow">
+    <div class="section-head">
+      <h2>From raw directory to enforced decision</h2>
+      <span class="count">§ 02 — WORKFLOW</span>
+    </div>
+    <div class="workflow">
+      <div class="workflow-rail"><span class="wnum">FIG. 1</span></div>
+      <div class="workflow-steps">
+        <div class="workflow-step">
+          <h3>Ingest &amp; normalize</h3>
+          <p>Connect a source and IAG pulls identities and entitlements into the catalog. Every sync is an audit event; re-syncs upsert, they never duplicate rows.</p>
+        </div>
+        <div class="workflow-step">
+          <h3>Scope the campaign</h3>
+          <p>Filters by source, department, privilege tier, or orphaned accounts define the review population. SoD rules pre-flag toxic combinations before reviewers see them.</p>
+        </div>
+        <div class="workflow-step">
+          <h3>Decide, with evidence</h3>
+          <p>Reviewers approve or revoke each access item. Each decision writes an audit entry hash-chained to everything before it — decisions are provable after the fact.</p>
+        </div>
+        <div class="workflow-step">
+          <h3>Enforce at the source</h3>
+          <p>Revocations trigger enforcement rules: email the owner, fire a webhook, or write the change back to LDAP, Entra ID, or SQL — and log the outcome to the chain.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= SPECIMENS ======================= -->
+  <section class="section wrap" id="evidence">
+    <div class="section-head">
+      <h2>The product, on the record</h2>
+      <span class="count">§ 03 — SPECIMENS</span>
+    </div>
+    <p style="color: var(--ink-soft); margin: -20px 0 34px; max-width: 40em;">
+      Not mockups. These are working views of IAG v0.3.0, captured by an automated
+      evidence pipeline that screenshots the running stack and verifies the audit
+      chain on every docs build.
+    </p>
+    <div class="specimens">
+      <figure class="specimen">
+        <img src="assets/img/screenshots/02-dashboard.png" alt="IAG dashboard showing identity counts, campaign status and recent audit activity" loading="lazy">
+        <figcaption class="cap"><span class="t">Dashboard</span><span class="fig">FIG. 02</span></figcaption>
+      </figure>
+      <figure class="specimen">
+        <img src="assets/img/screenshots/03-identities.png" alt="Identities table with department, source and risk columns" loading="lazy">
+        <figcaption class="cap"><span class="t">Identities</span><span class="fig">FIG. 03</span></figcaption>
+      </figure>
+      <figure class="specimen">
+        <img src="assets/img/screenshots/05-entitlements.png" alt="Entitlement catalog with normalized roles and applications" loading="lazy">
+        </pagesfigcaption class="cap"><span class="t">Entitlement catalog</span><span class="fig">FIG. 05</span></figcaption>
+      </figure>
+      <figure class="specimen">
+        <img src="assets/img/screenshots/06-campaigns.png" alt="Certification campaign list with progress bars" loading="lazy">
+        <figcaption class="cap"><span class="t">Campaigns</span><span class="fig">FIG. 06</span></figcaption>
+      </figure>
+      <figure class="specimen">
+        <img src="assets/img/screenshots/08-sod.png" alt="Segregation of duties rules and toxic combination hits" loading="lazy">
+        <figcaption class="cap"><span class="t">SoD rules</span><span class="fig">FIG. 08</span></figcaption>
+      </figure>
+      <figure class="specimen">
+        <img src="assets/img/screenshots/09-remediation.png" alt="Remediation rules with enforcement write-back targets" loading="lazy">
+        <figcaption class="cap"><span class="t">Remediation</span><span class="fig">FIG. 09</span></figcaption>
+      </figure>
+      <figure class="specimen">
+        <img src="assets/img/screenshots/14-audit.png" alt="Hash-chained audit log viewer with chain verification status" loading="lazy">
+        <figcaption class="cap"><span class="t">Audit chain</span><span class="fig">FIG. 14</span></figcaption>
+      </figure>
+      <figure class="specimen">
+        <img src="assets/img/screenshots/17-theme-dark.png" alt="IAG in dark theme" loading="lazy">
+        <figcaption class="cap"><span class="t">Dark theme</span><span class="fig">FIG. 17</span></figcaption>
+      </figure>
+    </div>
+</section>
+
+  <!-- ======================= PROOF ======================= -->
+  <section class="section wrap" id="proof">
+    <div class="section-head">
+      <h2>Tested, not assumed</h2>
+      <span class="count">§ 05 — PROOF</span>
+    </div>
+    <div class="proof">
+      <div class="sheet proof-cell"><div class="n">288</div><div class="l">backend tests</div></div>
+      <div class="sheet proof-cell"><div class="n">3×</div><div class="l">stateless replicas</div></div>
+      <div class="sheet proof-cell"><div class="n">1</div><div class="l">writer of truth (postgres)</div></div>
+      <div class="sheet proof-cell"><div class="n">SHA-256</div><div class="l">hash-chained audit</div></div>
+    </div>
+</section>
+
+  <!-- ======================= ARCHITECTURE ======================= -->
+  <section class="section wrap" id="architecture">
+    <div class="section-head">
+      <h2>An architecture you can audit</h2>
+      <span class="count">§ 04 — ARCHITECTURE</span>
+    </div>
+    <div class="arch">
+      <pre>
+Browser ──▶ nginx (LB; no DB creds, no writes)
+              ├─▶ iag-app-1 ─┐
+              ├─▶ iag-app-2 ─┼─▶ PostgreSQL 16  (single writer of truth)
+              ├─▶ iag-app-3 ─┘        ▲
+              └─▶ iag-migrate (one-shot Alembic, then exits)
+                                      │
+        audit_entries: append-only, hash-chained
+        record_hash = SHA256(prev_hash + canonical_json(entry))
+      </pre>
+      <div class="arch-notes">
+        <div class="arch-note">
+          <h4>STATELESS REPLICAS</h4>
+          <p>Kill any app replica mid-request and the worst case is one retried request. Sessions are signed stateless JWTs — any replica validates any session.</p>
+        </div>
+        <div class="arch-note">
+          <h4>TRANSACTIONAL AUDIT</h4>
+          <p>Every state change commits with its audit entry in the same transaction, or not at all. Container logs are telemetry, never evidence.</p>
+        </div>
+        <div class="arch-note">
+          <h4>MIGRATION AUTHORITY</h4>
+          <p>Only the one-shot migrate container runs Alembic. App replicas wait for a healthy DB but never alter schema.</p>
+        </div>
+        <div class="arch-note">
+          <h4>FAULT TOLERANCE, PROVEN</h4>
+      <p>scripts/smoke.sh kills a replica and asserts the service survives and the chain stays valid — resilience is a test, not a claim.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= DOCS CALLOUT ======================= -->
+  <section class="section wrap">
+    <div class="sheet sheet-lines ledger-margin docs-callout">
+      <div>
+        <div class="eyebrow">§ 06 — DOCUMENTATION</div>
+        <h2>Full documentation lives at its own address</h2>
+        <p>
+          The complete administrator guide — every view, every workflow, verified against the
+          running stack by the same evidence pipeline — is published at
+          <span class="mono">docs.iam-simplified.com</span>.
+        </p>
+      </div>
+      <div class="docs-cta">
+        <span class="domain-tag">docs.iam-simplified.com</span>
+        <a class="btn btn-primary" href="https://docs.iam-simplified.com">Open the docs&nbsp;&nbsp;→</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= DEPLOY ======================= -->
+  <section class="section wrap" id="deploy">
+    <div class="section-head">
+      <h2>Get running</h2>
+      <span class="count">§ 07 — DEPLOY</span>
+    </div>
+    <div class="deploy-grid">
+      <pre>
+# 1. Generate local secrets (writes .env)
+python scripts/gen_env.py
+
+# 2. Build and start
+docker compose up -d --build
+
+# 3. Log in at http://localhost:8090
+#    user: admin
+#    password: $IAG_BOOTSTRAP_ADMIN_PASSWORD
+</pre>
+      <ul class="deploy-list">
+        <li><span class="tick">✓</span><span><strong>Docker only.</strong> The image builds the frontend and backend; no host tooling beyond Docker.</span></li>
+        <li><span class="tick">✓</span><span><strong>Connectors on demand.</strong> <span class="mono">--profile connectors</span> adds a read-only LDAP and a writable OpenLDAP for testing write-back.</span></li>
+        <li><span class="tick">✓</span><span><strong>Runs where your data lives.</strong> Postgres volume, local SMTP or smarthost, no outbound calls required.</span></li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <span>IAG — Identity &amp; Access Governance, self-hosted.</span>
+    <span class="fine">LEDGER NO. v0.3.0 · <a href="https://github.com/ponofinlayson-web/iag">GITHUB</a> · <a href="https://docs.iam-simplified.com">DOCS</a></span>
+  </div>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>
