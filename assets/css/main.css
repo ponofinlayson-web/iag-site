@@ -112,6 +112,7 @@ body::before {
   background: var(--surface);
   color: var(--text);
   padding: 9px 18px;
+  border-radius: 8px;
   font-family: var(--font-body); font-size: 15px; font-weight: 600;
   cursor: pointer;
   transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
@@ -135,6 +136,8 @@ body::before {
   position: relative;
   background: var(--paper-raised);
   border: 1px solid var(--rule-dark);
+  border-radius: 14px;
+  overflow: hidden;
   box-shadow: var(--shadow-card);
 }
 .sheet-lines {
@@ -289,7 +292,8 @@ body::before {
 .arch pre {
   font-family: var(--font-mono); font-size: 13px; line-height: 1.55;
   background: var(--surface-2); color: var(--text-soft);
-  padding: 22px; overflow-x: auto;
+  padding: 22px;
+  border-radius: 14px; overflow-x: auto;
   border: 1px solid var(--line-strong);
   box-shadow: var(--shadow-card);
 }
@@ -319,7 +323,8 @@ body::before {
 .deploy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
 .deploy-grid pre {
   font-family: var(--font-mono); font-size: 13.5px; line-height: 1.6;
-  background: var(--surface-2); color: var(--text-soft); padding: 20px 22px; overflow-x: auto;
+  background: var(--surface-2); color: var(--text-soft);   padding: 20px 22px;
+  border-radius: 14px; overflow-x: auto;
 }
 .deploy-list { list-style: none; display: flex; flex-direction: column; gap: 13px; }
 .deploy-list li { display: flex; gap: 12px; align-items: baseline; color: var(--ink-soft); font-size: 15.5px; }
