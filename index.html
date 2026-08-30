@@ -51,11 +51,11 @@
         <div class="hero-meta">
           <span><span class="dot"></span>288 backend tests green</span>
           <span><span class="dot"></span>Fault-tolerance smoke-tested</span>
-          <span><span class="dot"></span>MIT-ish self-host, no phoning home</span>
+          <span><span class="dot"></span>MIT licensed self-hosting option, no phoning home</span>
         </div>
       </div>
 
-      <aside class="sheet sheet-lines ledger-margin chain-panel" aria-label="Audit chain sample">
+      <aside class="sheet sheet-lines chain-panel" aria-label="Audit chain sample">
         <h3><span>AUDIT_ENTRIES · TAIL</span> <span class="live">● LIVE</span></h3>
         <div id="chainfeed">
           <div class="chain-row">
@@ -77,22 +77,22 @@
       <span class="count">§ 01 — CAPABILITIES</span>
     </div>
     <div class="pillars">
-      <div class="sheet pillar ledger-margin">
+      <div class="sheet pillar">
         <span class="num">§ 1.1</span>
         <h3>Ingest from anywhere</h3>
         <p>CSV uploads and live connectors — LDAP/AD, Entra ID, SQL, CSV-on-URL — normalize accounts and access into a stable entitlement catalog. Re-syncs refresh; they never duplicate.</p>
       </div>
-      <div class="sheet pillar ledger-margin">
+      <div class="sheet pillar">
         <span class="num">§ 1.2</span>
         <h3>Certify in campaigns</h3>
         <p>Scope by source, department, privilege, or orphaned accounts. Reviewers resolve each access review; campaigns auto-complete at 100% decided, with SoD toxic-combination flags surfaced inline.</p>
       </div>
-      <div class="sheet pillar ledger-margin">
+      <div class="sheet pillar">
         <span class="num">§ 1.3</span>
         <h3>Enforce with write-back</h3>
         <p>Decisions trigger rules that notify owners by email, call webhooks, or write access changes back at the source — LDAP member removal, Entra group writes, SQL statements.</p>
       </div>
-      <div class="sheet pillar ledger-margin">
+      <div class="sheet pillar">
         <span class="num">§ 1.4</span>
         <h3>Prove it later</h3>
         <p>An append-only, hash-chained audit trail commits in the same transaction as every state change — plus a chain-verification endpoint and a pull-only JSONL SIEM feed.</p>
@@ -140,39 +140,95 @@
       evidence pipeline that screenshots the running stack and verifies the audit
       chain on every docs build.
     </p>
-    <div class="specimens">
-      <figure class="specimen">
-        <img src="assets/img/screenshots/02-dashboard.png" alt="IAG dashboard showing identity counts, campaign status and recent audit activity" loading="lazy">
-        <figcaption class="cap"><span class="t">Dashboard</span><span class="fig">FIG. 02</span></figcaption>
-      </figure>
-      <figure class="specimen">
-        <img src="assets/img/screenshots/03-identities.png" alt="Identities table with department, source and risk columns" loading="lazy">
-        <figcaption class="cap"><span class="t">Identities</span><span class="fig">FIG. 03</span></figcaption>
-      </figure>
-      <figure class="specimen">
-        <img src="assets/img/screenshots/05-entitlements.png" alt="Entitlement catalog with normalized roles and applications" loading="lazy">
-        </pagesfigcaption class="cap"><span class="t">Entitlement catalog</span><span class="fig">FIG. 05</span></figcaption>
-      </figure>
-      <figure class="specimen">
-        <img src="assets/img/screenshots/06-campaigns.png" alt="Certification campaign list with progress bars" loading="lazy">
-        <figcaption class="cap"><span class="t">Campaigns</span><span class="fig">FIG. 06</span></figcaption>
-      </figure>
-      <figure class="specimen">
-        <img src="assets/img/screenshots/08-sod.png" alt="Segregation of duties rules and toxic combination hits" loading="lazy">
-        <figcaption class="cap"><span class="t">SoD rules</span><span class="fig">FIG. 08</span></figcaption>
-      </figure>
-      <figure class="specimen">
-        <img src="assets/img/screenshots/09-remediation.png" alt="Remediation rules with enforcement write-back targets" loading="lazy">
-        <figcaption class="cap"><span class="t">Remediation</span><span class="fig">FIG. 09</span></figcaption>
-      </figure>
-      <figure class="specimen">
-        <img src="assets/img/screenshots/14-audit.png" alt="Hash-chained audit log viewer with chain verification status" loading="lazy">
-        <figcaption class="cap"><span class="t">Audit chain</span><span class="fig">FIG. 14</span></figcaption>
-      </figure>
-      <figure class="specimen">
-        <img src="assets/img/screenshots/17-theme-dark.png" alt="IAG in dark theme" loading="lazy">
-        <figcaption class="cap"><span class="t">Dark theme</span><span class="fig">FIG. 17</span></figcaption>
-      </figure>
+        <div class="tour">
+      <div class="tour-row">
+        <figure class="tour-shot">
+          <img src="assets/img/screenshots/02-dashboard.png" alt="IAG dashboard showing identity counts, campaign status and recent audit activity" loading="lazy">
+          <figcaption><span>DASHBOARD</span><span>FIG. 02</span></figcaption>
+        </figure>
+        <div class="tour-text">
+          <span class="num">&#167; 03.1</span>
+          <h3>The estate at a glance</h3>
+          <p>Identity counts, live campaign progress and the latest audit activity, rendered by the running stack &#8212; the same views the evidence pipeline captures on every docs build.</p>
+        </div>
+      </div>
+      <div class="tour-row flip">
+        <figure class="tour-shot">
+          <img src="assets/img/screenshots/03-identities.png" alt="Identities table with department, source and risk columns" loading="lazy">
+          <figcaption><span>IDENTITIES</span><span>FIG. 03</span></figcaption>
+        </figure>
+        <div class="tour-text">
+          <span class="num">&#167; 03.2</span>
+          <h3>One table for every source</h3>
+          <p>Accounts from LDAP, Entra ID, SQL and CSV normalize into a single identities table. The department, source and risk columns here are the same filters you scope campaigns with.</p>
+        </div>
+      </div>
+      <div class="tour-row">
+        <figure class="tour-shot">
+          <img src="assets/img/screenshots/05-entitlements.png" alt="Entitlement catalog with normalized roles and applications" loading="lazy">
+          <figcaption><span>ENTITLEMENT CATALOG</span><span>FIG. 05</span></figcaption>
+        </figure>
+        <div class="tour-text">
+          <span class="num">&#167; 03.3</span>
+          <h3>A catalog you can certify against</h3>
+          <p>Raw access from every connector becomes a normalized catalog of roles and applications &#8212; so reviews compare like with like instead of source-specific names.</p>
+        </div>
+      </div>
+      <div class="tour-row flip">
+        <figure class="tour-shot">
+          <img src="assets/img/screenshots/06-campaigns.png" alt="Certification campaign list with progress bars" loading="lazy">
+          <figcaption><span>CAMPAIGNS</span><span>FIG. 06</span></figcaption>
+        </figure>
+        <div class="tour-text">
+          <span class="num">&#167; 03.4</span>
+          <h3>Campaigns that close themselves out</h3>
+          <p>Each campaign shows its reviewer queues and live progress, and auto-completes at 100% decided &#8212; no dangling review state.</p>
+        </div>
+      </div>
+      <div class="tour-row">
+        <figure class="tour-shot">
+          <img src="assets/img/screenshots/08-sod.png" alt="Segregation of duties rules and toxic combination hits" loading="lazy">
+          <figcaption><span>SOD RULES</span><span>FIG. 08</span></figcaption>
+        </figure>
+        <div class="tour-text">
+          <span class="num">&#167; 03.5</span>
+          <h3>Toxic combinations, flagged early</h3>
+          <p>SOD rules define access that should never coexist. Hits surface inline during review &#8212; before anything is approved.</p>
+        </div>
+      </div>
+      <div class="tour-row flip">
+        <figure class="tour-shot">
+          <img src="assets/img/screenshots/09-remediation.png" alt="Remediation rules with enforcement write-back targets" loading="lazy">
+          <figcaption><span>REMEDIATION</span><span>FIG. 09</span></figcaption>
+        </figure>
+        <div class="tour-text">
+          <span class="num">&#167; 03.6</span>
+          <h3>Decisions that enforce themselves</h3>
+          <p>A revocation can email the owner, fire a webhook, or write the change back at the source &#8212; LDAP membership, Entra groups, SQL statements &#8212; with the outcome logged to the chain.</p>
+        </div>
+      </div>
+      <div class="tour-row">
+        <figure class="tour-shot">
+          <img src="assets/img/screenshots/14-audit.png" alt="Hash-chained audit log viewer with chain verification status" loading="lazy">
+          <figcaption><span>AUDIT CHAIN</span><span>FIG. 14</span></figcaption>
+        </figure>
+        <div class="tour-text">
+          <span class="num">&#167; 03.7</span>
+          <h3>The record that outlives the dashboard</h3>
+          <p>Every state change commits with its audit entry in one transaction. The viewer shows the chain; a verification endpoint proves it end to end.</p>
+        </div>
+      </div>
+      <div class="tour-row flip">
+        <figure class="tour-shot">
+          <img src="assets/img/screenshots/17-theme-dark.png" alt="IAG in dark theme" loading="lazy">
+          <figcaption><span>DARK THEME</span><span>FIG. 17</span></figcaption>
+        </figure>
+        <div class="tour-text">
+          <span class="num">&#167; 03.8</span>
+          <h3>Built for the people who live in it</h3>
+          <p>Every view ships a dark theme. The operators running campaigns at 2 a.m. get the same interface, not an afterthought.</p>
+        </div>
+      </div>
     </div>
 </section>
 
@@ -230,7 +286,7 @@ Browser ──▶ nginx (LB; no DB creds, no writes)
 
   <!-- ======================= DOCS CALLOUT ======================= -->
   <section class="section wrap">
-    <div class="sheet sheet-lines ledger-margin docs-callout">
+    <div class="sheet sheet-lines docs-callout">
       <div>
         <div class="eyebrow">§ 06 — DOCUMENTATION</div>
         <h2>Full documentation lives at its own address</h2>
