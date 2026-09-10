@@ -229,7 +229,7 @@ body::before {
 }
 .pillar h3 { font-family: var(--font-display); font-size: 21px; font-weight: 600; }
 .pillar p { font-size: 15.5px; color: var(--ink-soft); }
-.pillar 
+
 /* ---------- workflow ledger ---------- */
 .workflow { display: grid; grid-template-columns: 110px 1fr; gap: 0; }
 .workflow-rail {
@@ -310,7 +310,7 @@ body::before {
   display: flex; align-items: center; justify-content: space-between; gap: 30px;
   flex-wrap: wrap;
 }
-.docs-callout .docs-callout h2 {
+.docs-callout h2 {
   font-family: var(--font-display); font-size: clamp(26px, 3vw, 34px); margin: 8px 0 10px;
 }
 .docs-callout p { color: var(--ink-soft); max-width: 34em; }
